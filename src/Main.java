@@ -1,5 +1,7 @@
 import Zad1.FileListingFromDirectory;
 import Zad2.FileOperations;
+import Zad5.TextFileComparator;
+import Zad6.ReversingTextFromFile;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,15 +12,25 @@ public class Main {
 
         //Zad2
         FileOperations foper1=new FileOperations();
-        foper1.writeUserInputToFile();
+        //foper1.writeUserInputToFile();
 
-        // not ready
+        foper1.readFromFile("files/file6.txt");
+
+
 
         //Zad3 Zad4
 
         //Zad5
+        System.out.println();
 
+        TextFileComparator textFileComparator=new TextFileComparator();
+        System.out.println(textFileComparator.areTextFilesEqual("files/file1.txt","files/file7.txt"));
         //Zad6
+
+        //do poprawienia  kropka
+
+        ReversingTextFromFile rtff=new ReversingTextFromFile();
+        rtff.reversedTextInNewFile("files/file5.txt");
     }
 }
 /*
