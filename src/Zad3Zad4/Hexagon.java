@@ -10,6 +10,6 @@ public class Hexagon extends Figure {
 
     @Override
     public double calculateArea() {
-        return (3*Math.pow(side,2)*Math.sqrt(3))/2;
+        return (3 * Math.pow(side, 2) * Math.sqrt(3)) / 2;
     }
 }

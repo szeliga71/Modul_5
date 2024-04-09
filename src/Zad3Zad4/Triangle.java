@@ -12,6 +12,6 @@ public class Triangle extends Figure {
 
     @Override
     public double calculateArea() {
-        return (side*height)/2;
+        return (side * height) / 2;
     }
 }

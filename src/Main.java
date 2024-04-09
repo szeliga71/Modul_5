@@ -1,5 +1,9 @@
 import Zad1.FileListingFromDirectory;
 import Zad2.FileOperations;
+import Zad3Zad4.Hexagon;
+import Zad3Zad4.Rectangle;
+import Zad3Zad4.Square;
+import Zad3Zad4.Triangle;
 import Zad5.TextFileComparator;
 import Zad6.ReversingTextFromFile;
 
@@ -20,6 +24,19 @@ public class Main {
 
         //Zad3 Zad4
 
+        Hexagon hx1=new Hexagon(5);
+        System.out.println(hx1.calculateArea());
+
+        Rectangle rc1=new Rectangle(9,12);
+        System.out.println(rc1.calculateArea());
+
+        Triangle tr1=new Triangle(16,8.5);
+        System.out.println(tr1.calculateArea());
+
+        Square sq1=new Square(9.5);
+        System.out.println(sq1.calculateDiameter());
+        System.out.println(sq1.calculateArea());
+
         //Zad5
         System.out.println();
 
@@ -27,10 +44,9 @@ public class Main {
         System.out.println(textFileComparator.areTextFilesEqual("files/file1.txt","files/file7.txt"));
         //Zad6
 
-        //do poprawienia  kropka
 
         ReversingTextFromFile rtff=new ReversingTextFromFile();
-        rtff.reversedTextInNewFile("files/file5.txt");
+        rtff.invertFile("files/file5.txt");
     }
 }
 /*

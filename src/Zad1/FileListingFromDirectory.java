@@ -9,41 +9,41 @@ import java.util.Scanner;
 public class FileListingFromDirectory {
 
 
-    public void writeTextToFile(){
-        Scanner scan=new Scanner(System.in);
+    public void writeTextToFile() {
+        Scanner scan = new Scanner(System.in);
         System.out.println(" What do You want save in file ?");
-        String text= scan.nextLine();
+        String text = scan.nextLine();
         System.out.println("Give name of file");
-        String fileName= scan.nextLine();
-        File file=new File("files/"+fileName+".txt");
+        String fileName = scan.nextLine();
+        File file = new File("files/" + fileName + ".txt");
 
-        try{
+        try {
             file.createNewFile();
-            FileWriter writer=new FileWriter(file);
-            BufferedWriter bufferedWriter=new BufferedWriter(writer);
+            FileWriter writer = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
             bufferedWriter.write(text);
             bufferedWriter.flush();
 
             bufferedWriter.close();
             writer.close();
-        }catch(IOException ioException){
+        } catch (IOException ioException) {
             ioException.printStackTrace();
         }
 
     }
 
-    public void printDirectory(String directoryPath){
+    public void printDirectory(String directoryPath) {
 
-        File directory=new File(directoryPath);
-        if(directory.isDirectory()){
-            File[]filesInDirectory=directory.listFiles();
+        File directory = new File(directoryPath);
+        if (directory.isDirectory()) {
+            File[] filesInDirectory = directory.listFiles();
 
-        if(filesInDirectory !=null){
-        for(File file: filesInDirectory){
+            if (filesInDirectory != null) {
+                for (File file : filesInDirectory) {
 
-            System.out.println(file.getName());
-        }
-        }
+                    System.out.println(file.getName());
+                }
+            }
         }
 
 

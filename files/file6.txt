@@ -1,0 +1,6 @@
+To jest przykladowy tekst
+ktory ma byc podzielony
+co czwatrte slowo i
+teraz ten text wpisusje
+w celu przetestowania dzialania
+programu 
