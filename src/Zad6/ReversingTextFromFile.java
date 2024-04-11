@@ -70,7 +70,7 @@ public class ReversingTextFromFile {
         } catch (IOException ioException) {
             ioException.printStackTrace();
 
-            return false;
+            return  false;
         }
         //==========================
         String textFromSavedFile = "";
