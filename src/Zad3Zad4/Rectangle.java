@@ -6,12 +6,23 @@ public class Rectangle extends Figure {
     double sideB;
 
     public Rectangle(double sideA, double sideB) {
-        this.sideA = sideA;
-        this.sideB = sideB;
+
+
+            this.sideA = sideA;
+            this.sideB = sideB;
+
     }
+
 
     @Override
     public double calculateArea() {
-        return sideA * sideB;
+        if(naturalNumbersParametersSideA(sideA)){
+            return 0;}
+            else if(naturalNumbersParametersSideB(sideB)){
+            return 0;
+        }else{
+            return sideA * sideB;
+        }
     }
+
 }

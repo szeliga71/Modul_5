@@ -9,13 +9,44 @@ public class RectangleTest {
 
 
 
-    double sideA=2;
+    double sideA=0;
     double sideB=5;
 
     Rectangle rc =new Rectangle(sideA,sideB);
 
     @Test
-    public void areaCalculate(){
-        Assertions.assertEquals(10,rc.calculateArea());
+    public void areaCalculateTest()
+    {
+
+        Rectangle rc =new Rectangle(6,5);
+        Assertions.assertEquals(30,rc.calculateArea());
+    }
+    @Test
+    public void areaCalculateBothSideNegativeTest()
+    {
+
+        Rectangle rc =new Rectangle(-6,-5);
+        Assertions.assertEquals(0,rc.calculateArea());
+    }
+    @Test
+    public void areaCalculateOneSideNegativeTest()
+    {
+
+        Rectangle rc =new Rectangle(-6,5);
+        Assertions.assertEquals(0,rc.calculateArea());
+    }
+    @Test
+    public void areaCalculateBothSideZeroTest()
+    {
+
+        Rectangle rc =new Rectangle(0,0);
+        Assertions.assertEquals(0,rc.calculateArea());
+    }
+    @Test
+    public void areaCalculateOneSideZeroTest()
+    {
+
+        Rectangle rc =new Rectangle(0,15);
+        Assertions.assertEquals(0,rc.calculateArea());
     }
 }
