@@ -11,6 +11,7 @@ public class ReversingTextFromFile {
         String textfromFile = "";
         StringBuilder textBuilder = new StringBuilder();
 
+
         File file = new File(filePath);
 
         try {
@@ -27,7 +28,6 @@ public class ReversingTextFromFile {
 
             textfromFile = textBuilder.toString().trim();
 
-            System.out.println(textfromFile);
 
             fileReader.close();
             bufferedReader.close();
@@ -35,6 +35,7 @@ public class ReversingTextFromFile {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+
 
         textBuilder.setLength(0);
 
@@ -46,8 +47,6 @@ public class ReversingTextFromFile {
             textBuilder.append(wordsFromSourceFile[i]);
 
         }
-
-        System.out.println(wordsFromSourceFile.length);
 
 
         Scanner scan = new Scanner(System.in);
@@ -64,14 +63,45 @@ public class ReversingTextFromFile {
 
             fileWriter.close();
             bufferedWriter.close();
-            return true;
+
+            //return true;
+
 
         } catch (IOException ioException) {
             ioException.printStackTrace();
 
             return false;
         }
+        //==========================
+        String textFromSavedFile = "";
+        StringBuilder textSavedBuilder = new StringBuilder();
+
+        File savedFile = new File("files/" + fileName + ".txt");
+
+        try {
+            FileReader fileReader1 = new FileReader(savedFile);
+            BufferedReader bufferedReader1 = new BufferedReader(fileReader1);
+            textFromSavedFile = bufferedReader1.readLine();
+
+            while (textFromSavedFile != null) {
+                textSavedBuilder.append(textFromSavedFile);
+                textSavedBuilder.append("\n");
+                textFromSavedFile = bufferedReader1.readLine();
+            }
 
 
+            textFromSavedFile = textSavedBuilder.toString().trim();
+
+
+            fileReader1.close();
+            bufferedReader1.close();
+
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+
+        }
+
+        return textBuilder.toString().equals(textFromSavedFile);
     }
+
 }

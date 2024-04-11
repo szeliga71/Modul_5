@@ -47,7 +47,8 @@ public class Main {
 
 
         ReversingTextFromFile rtff=new ReversingTextFromFile();
-        rtff.invertFile("files/file5.txt");
+        //rtff.invertFile("files/file5.txt");
+        System.out.println(rtff.invertFile("files/file5.txt"));
     }
 }
 /*
