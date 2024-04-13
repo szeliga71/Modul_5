@@ -2,27 +2,15 @@ package Zad3Zad4;
 
 public abstract class Figure implements GeometricFigure {
 
-    public boolean naturalNumbersParametersSideA(double sideA){
-        if (sideA <= 0) {
+    public boolean isNaturalNumbersParameter(double elemenLength) {
+        if (elemenLength <= 0) {
             return true;
-    }else{
-        return false;
-        }
-    }
-
-    public boolean naturalNumbersParametersSideB(double sideB){
-        if (sideB <= 0) {
-        return true;
-    }else{
-        return false;
-    }
-    }
-
-    public boolean naturalNumbersParametersHeigth(double heigth){
-        if (heigth<= 0) {
-            return true;
-        }else{
+        } else {
             return false;
         }
     }
+
+
+
+
 }

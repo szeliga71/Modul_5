@@ -7,6 +7,7 @@ import Zad3Zad4.Triangle;
 import Zad5.TextFileComparator;
 import Zad6.ReversingTextFromFile;
 
+
 public class Main {
     public static void main(String[] args) {
 
@@ -40,16 +41,22 @@ public class Main {
 
         //Zad5
         System.out.println();
+        System.out.println(" comparator");
 
         TextFileComparator textFileComparator=new TextFileComparator();
-        System.out.println(textFileComparator.areTextFilesEqual("files/file1.txt","files/file7.txt"));
+        System.out.println(textFileComparator.areTextFilesEqual("files/file1.txt","files/file8.txt"));
         //Zad6
 
 
         ReversingTextFromFile rtff=new ReversingTextFromFile();
         //rtff.invertFile("files/file5.txt");
-        System.out.println(rtff.invertFile("files/file5.txt"));
+        //System.out.println(rtff.invertFileSimple("makumba"));
+        System.out.println(rtff.invertFileSimple("files/file5.txt"));
+
+
     }
+
+
 }
 /*
 Napisz program, która wylistuje wszystkie pliki w danym folderze:

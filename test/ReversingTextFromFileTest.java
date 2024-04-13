@@ -1,68 +1,125 @@
+import Zad2.FileOperations;
+import Zad6.ReversingTextFromFile;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
 
 public class ReversingTextFromFileTest {
 
-    String textFromFile = "";
-    StringBuilder textBuilder = new StringBuilder();
-    String text1 = "Test pliku testowego w nowym katalogu o nazwie testFiles.";
+    private ReversingTextFromFile rtff1 = new ReversingTextFromFile();
+    private FileOperations fo1 = new FileOperations();
+
+    private StringBuilder textBuilder = new StringBuilder();
 
 
-    @BeforeEach
+    @Test
+    public void reverseMethodTest() {
+        String text1 = "Test pliku testowego w nowym katalogu o nazwie testFiles.";
+        textBuilder.append(text1);
+        Assertions.assertEquals(textBuilder.toString(), text1);
 
-    public void create() {
-        String directoryPath = "testFiles";
-        File directory = new File(directoryPath);
-
-        if (!directory.exists()) {
-
-            boolean created = directory.mkdir();
-
-            if (created) {
-                System.out.println(" utworzno katalog");
-            } else {
-                System.out.println(" nie udalo sie utworzyc katalogu ");
-
-            }
-        } else {
-            System.out.println(" katalog juz istnieje ");
-        }
-
-        File testFile1 = new File("testFiles/testFile1");
-
-
-
-        try (FileWriter fileWriter = new FileWriter(testFile1); BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);) {
-
-            bufferedWriter.write(text1);
-            bufferedWriter.flush();
-
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }
-
-        try (FileReader fileReader = new FileReader(testFile1); BufferedReader bufferedReader = new BufferedReader(fileReader);) {
-
-            textFromFile = bufferedReader.readLine();
-            while (textFromFile != null) {
-                textBuilder.append(textFromFile);
-                textFromFile = bufferedReader.readLine();
-            }
-
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }
     }
 
     @Test
+    public void invertFileSimpleNullArgument() {
+        Assertions.assertFalse(rtff1.invertFileSimple(null));
+    }
 
-    public void reverseMethodTest() {
+    @Test
+    public void invertFileSimpleEmptyArgument() {
+        Assertions.assertFalse(rtff1.invertFileSimple(""));
+    }
 
-        Assertions.assertEquals(textBuilder.toString(), text1);
+    @Test
+    public void invertFileSimpleIllegalArgument() {
+        Assertions.assertFalse(rtff1.invertFileSimple("MickejMouse"));
+    }
 
+    @Test
+    public void invertFileSimpleOkArgument() {
+        Assertions.assertTrue(rtff1.invertFileSimple("files/file5.txt"));
+    }
+    @Test
+    public void invertFileSimpleDirectoryNameArgument() {
+        Assertions.assertFalse(rtff1.invertFileSimple("files"));
+    }
 
+    @Test
+    public void checkTextWithTextInReversingFile() {
+
+        String text = "Ala ma bialego kota Filemona.";
+        String[] tabWithReversedText = text.split("\\b");
+        StringBuilder textBuilder = new StringBuilder();
+        for (int i = tabWithReversedText.length - 1; i >= 0; i--) {
+            textBuilder.append(tabWithReversedText[i]).append(" ");
+        }
+        String reverseText = textBuilder.toString().trim();
+
+        fo1.writeTextToFile(reverseText, "files/file8.txt");
+
+        Assertions.assertEquals(reverseText, fo1.readFromFileAndReturnString("file8.txt"));
+
+    }
+
+    @Test
+    public void checkTextWithIllegalTextInReversingFile() {
+
+        String text = "Ala ma bialego kota Filemona.";
+        String[] tabWithReversedText = text.split("\\b");
+        StringBuilder textBuilder = new StringBuilder();
+        for (int i = tabWithReversedText.length - 1; i >= 0; i--) {
+            textBuilder.append(tabWithReversedText[i]).append(" ");
+        }
+        String reverseText = textBuilder.toString().trim();
+        String illegalText = "Mis Uszatek";
+
+        fo1.writeTextToFile(reverseText, "files/file8.txt");
+
+        Assertions.assertNotEquals(illegalText, fo1.readFromFileAndReturnString("file8.txt"));
+
+    }
+
+    @Test
+    public void checkTextWithEmptyTextInReversingFile() {
+
+        String text = "";
+        String[] tabWithReversedText = text.split("\\b");
+        StringBuilder textBuilder = new StringBuilder();
+        for (int i = tabWithReversedText.length - 1; i >= 0; i--) {
+            textBuilder.append(tabWithReversedText[i]).append(" ");
+        }
+        String reverseText = textBuilder.toString().trim();
+        String illegalText = "Mis Uszatek";
+
+        fo1.writeTextToFile(reverseText, "files/file8.txt");
+
+        Assertions.assertNotEquals(illegalText, fo1.readFromFileAndReturnString("file8.txt"));
+
+    }
+
+    @Test
+    public void checkTextWithNullTextInReversingFile() {
+
+        String text = null;
+        StringBuilder textBuilder = new StringBuilder();
+        try {
+            String[] tabWithReversedText = text.split("\\b");
+            for (int i = tabWithReversedText.length - 1; i >= 0; i--) {
+                textBuilder.append(tabWithReversedText[i]).append(" ");
+            }
+        } catch (NullPointerException nullPointerException) {
+            System.out.println("text nie isnieje poniewaz jest nullem");
+        }
+        String reverseText = textBuilder.toString().trim();
+        String illegalText = "Mis Uszatek";
+
+        fo1.writeTextToFile(reverseText, "files/file8.txt");
+
+        Assertions.assertNotEquals(illegalText, fo1.readFromFileAndReturnString("file8.txt"));
+
+    }
+    @Test
+    public void checkTextWithEmptyFileInReversingFile() {
+        Assertions.assertEquals("",fo1.readFromFileAndReturnString("emptyFile.txt"));
     }
 }

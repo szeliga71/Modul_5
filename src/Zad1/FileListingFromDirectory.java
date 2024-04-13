@@ -8,8 +8,10 @@ import java.util.Scanner;
 
 public class FileListingFromDirectory {
 
+    private String text;
 
-    public void writeTextToFile() {
+
+    public void writeUserInputTextToFile() {
         Scanner scan = new Scanner(System.in);
         System.out.println(" What do You want save in file ?");
         String text = scan.nextLine();
@@ -17,15 +19,12 @@ public class FileListingFromDirectory {
         String fileName = scan.nextLine();
         File file = new File("files/" + fileName + ".txt");
 
-        try {
+        try (FileWriter writer = new FileWriter(file); BufferedWriter bufferedWriter = new BufferedWriter(writer);) {
             file.createNewFile();
-            FileWriter writer = new FileWriter(file);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+
             bufferedWriter.write(text);
             bufferedWriter.flush();
 
-            bufferedWriter.close();
-            writer.close();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -46,6 +45,21 @@ public class FileListingFromDirectory {
             }
         }
 
+
+    }
+    public void writeTextToFile(String pathName) {
+
+        File file = new File(pathName);
+
+        try (FileWriter writer = new FileWriter(file); BufferedWriter bufferedWriter = new BufferedWriter(writer);) {
+            file.createNewFile();
+
+            bufferedWriter.write(text);
+            bufferedWriter.flush();
+
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
 
     }
 }
