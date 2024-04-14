@@ -47,19 +47,5 @@ public class FileListingFromDirectory {
 
 
     }
-    public void writeTextToFile(String pathName) {
 
-        File file = new File(pathName);
-
-        try (FileWriter writer = new FileWriter(file); BufferedWriter bufferedWriter = new BufferedWriter(writer);) {
-            file.createNewFile();
-
-            bufferedWriter.write(text);
-            bufferedWriter.flush();
-
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }
-
-    }
 }
