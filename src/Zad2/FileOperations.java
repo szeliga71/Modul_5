@@ -1,5 +1,7 @@
 package Zad2;
 
+import GitIgnoreFileSaver.GitIgnoreFileSaver;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -31,11 +33,16 @@ public class FileOperations {
 
         try (FileWriter writer = new FileWriter(file); BufferedWriter bufferedWriter = new BufferedWriter(writer);) {
 
-            bufferedWriter.write(text);
+            bufferedWriter.write(userText);
             bufferedWriter.flush();
 
             writer.close();
             bufferedWriter.close();
+
+            GitIgnoreFileSaver gis=new GitIgnoreFileSaver();
+            String fullFileName=fileName+".txt";
+            gis.saveFileInGitIgnore(fullFileName);
+
             return true;
         } catch (IOException ioException) {
             ioException.printStackTrace();

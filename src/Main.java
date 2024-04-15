@@ -1,3 +1,4 @@
+import GitIgnoreFileSaver.GitIgnoreFileSaver;
 import Zad1.FileListingFromDirectory;
 import Zad2.FileOperations;
 import Zad3Zad4.Hexagon;
@@ -6,6 +7,8 @@ import Zad3Zad4.Square;
 import Zad3Zad4.Triangle;
 import Zad5.TextFileComparator;
 import Zad6.ReversingTextFromFile;
+
+import java.io.File;
 
 
 public class Main {
@@ -53,6 +56,15 @@ public class Main {
         //System.out.println(rtff.invertFileSimple("makumba"));
         System.out.println(rtff.invertFileSimple("files/file5.txt"));
 
+
+
+
+
+
+
+
+
+         foper1.writeUserInputToFile();
 
     }
 
