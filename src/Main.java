@@ -66,6 +66,8 @@ public class Main {
 
          foper1.writeUserInputToFile();
 
+         foper1.writeTextToFile("New Romantic","files/file7.txt");
+
     }
 
 

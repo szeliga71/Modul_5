@@ -40,8 +40,8 @@ public class FileOperations {
             bufferedWriter.close();
 
             GitIgnoreFileSaver gis=new GitIgnoreFileSaver();
-            String fullFileName=fileName+".txt";
-            gis.saveFileInGitIgnore(fullFileName);
+            String fileNameToSaveInGitIgnore=fileName+".txt";
+            gis.saveFileInGitIgnore(fileNameToSaveInGitIgnore);
 
             return true;
         } catch (IOException ioException) {
@@ -134,6 +134,10 @@ public class FileOperations {
                 }
                 bufferedWriter.write(text);
                 bufferedWriter.flush();
+
+                GitIgnoreFileSaver gis=new GitIgnoreFileSaver();
+                String fileNameToSaveInGitIgnore=pathName.substring(pathName.lastIndexOf("/")+1);
+                gis.saveFileInGitIgnore(fileNameToSaveInGitIgnore);
                 return true;
             } catch (IOException ioException) {
                 ioException.printStackTrace();
